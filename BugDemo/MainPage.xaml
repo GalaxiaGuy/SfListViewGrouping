@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:data="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable"
+    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:local="clr-namespace:BugDemo" x:Class="BugDemo.MainPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <listView:SfListView x:Name="list" Margin="32">
+            <listView:SfListView.DataSource>
+                <data:DataSource>
+                    <data:DataSource.GroupDescriptors>
+                        <data:GroupDescriptor PropertyName="Group"/>
+                    </data:DataSource.GroupDescriptors>
+                </data:DataSource>
+            </listView:SfListView.DataSource>
+            <listView:SfListView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding Key}" FontAttributes="Bold"/>
+                </DataTemplate>
+            </listView:SfListView.GroupHeaderTemplate>
+            <listView:SfListView.ItemTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding Content}"/>
+                </DataTemplate>
+            </listView:SfListView.ItemTemplate>
+        </listView:SfListView>
+        <Button Grid.Row="1" Clicked="ButtonClicked" Text="Reload" />
+    </Grid>
+</ContentPage>
